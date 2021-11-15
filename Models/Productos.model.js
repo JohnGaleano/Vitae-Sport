@@ -13,6 +13,6 @@ const ProductosSchema = new Schema
 );
 
 
-module.exports = mongoose.model("empleados",ProductosSchema);
+module.exports = mongoose.model("Productos",ProductosSchema);
 
 

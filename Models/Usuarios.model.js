@@ -12,6 +12,6 @@ const UsuariosSchema = new Schema
 }
 );
 
-module.exports = mongoose.model("empleados",ProductosSchema);
+module.exports = mongoose.model("Usuarios",UsuariosSchema);
 
 

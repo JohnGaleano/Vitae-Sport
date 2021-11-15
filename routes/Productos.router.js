@@ -4,4 +4,4 @@ const productosController = require("../Controllers/Productos.controller");
 
 router.post("/",productosController.create)
 
-modulo.exports = router
+module.exports = router

@@ -6,6 +6,8 @@ var logger = require('morgan');
 var database =  require("./config/Database");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var productosRouter = require("./routes/Productos.router");
+var usuariosRouter = require("./routes/Usuarios.router");
 
 var app = express();
 
@@ -44,3 +46,7 @@ module.exports = app;
 database.mongoConnect();
 
 // router
+app.use('/',indexRouter);
+app.use('/users',usersRouter);
+app.use('/usuarios',usuariosRouter);
+app.use('/productos',productosRouter);

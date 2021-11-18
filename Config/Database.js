@@ -4,6 +4,7 @@ const host = "localhost";
 const port = "27017";
 const db = "VitaeProd"; 
 
+// mongodb://localhost:27017/VitaeProd
 exports.mongoConnect = () => {
   const mongoStringConnection = `mongodb://${host}:${port}/${db}`;
   mongoose.connect(mongoStringConnection);

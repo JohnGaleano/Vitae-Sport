@@ -25,7 +25,7 @@ exports.save=function(err)
         Console.log =false,
         response.exito =false,
         response.msj ="Error al guardar el producto"
-        res.json(response)
+        res.json(err)
         return;
     }
     response.exito=true,

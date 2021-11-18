@@ -6,12 +6,15 @@ var logger = require('morgan');
 var database =  require("./config/Database");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var productosRouter = require("./routes/Productos.router");
+var usuariosRouter = require("./routes/Usuarios.router");
 
 var app = express();
 
 // // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -44,3 +47,7 @@ module.exports = app;
 database.mongoConnect();
 
 // router
+app.use('/',indexRouter);
+app.use('/users',usersRouter);
+app.use('/usuarios',usuariosRouter);
+app.use('/productos',productosRouter);

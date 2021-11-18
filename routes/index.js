@@ -6,5 +6,6 @@ router.get('/', function(req, res, next) {
   // res.render('index', { title: 'VitaeSport' });
   res.send("VitaeSport")
 });
+// get('/', (req, res, next) => res.render('index.hbs', { title: 'Home' }))
 
 module.exports = router;

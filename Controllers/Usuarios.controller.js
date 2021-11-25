@@ -1,4 +1,4 @@
-const Producto = require("../Models/Usuarios.model"); 
+const Usuario = require("../Models/Usuarios.model"); 
 let response=
 {
     msj:"",
@@ -7,30 +7,74 @@ let response=
 
 exports.create=function(req,res)
 {
-    let producto = new Producto(
+    let usuario = new Usuario(
     {
-        usr_login: req.body.usr_login,
-        usr_nombre: req.body.usr_nombre,
-        usr_activo: req.body.usr_activo,
-        usr_logo: req.body.usr_logo,
-        usr_img_perfil: req.body.usr_img_perfil
+        usr_login: req.body.login,
+        usr_nombre: req.body.nombre,
+        usr_password: req.body.password,
+        usr_activo: req.body.activo,
+        usr_logo: req.body.logo,
+        usr_img_perfil: req.body.imagen
     } 
     )
-}
 
-exports.save=function(err)
-{
-    if(err)
+    usuario.save(function(err)
     {
-        Console.log =false,
-        response.exito =false,
-        response.msj ="Error al guardar el usuario"
-        res.json(err)
-        return;
-    }
-    response.exito=true,
-    response.msj="usuario guardado con exito"
-    res.json(response)
-
+        if(err)
+        {
+            console.log =false,
+            response.exito =false,
+            response.msj ="Error al guardar el usuario"
+            res.json(err)
+            return;
+        }
+        response.exito=true,
+        response.msj="Usuario guardado con exito"
+        res.json(response)
+    })
 }
 
+
+exports.find = function(req,res)
+{
+    Usuario.find(function(err,usuario)
+    {
+        res.json(usuario)
+    })
+    
+}
+
+exports.findOne = function(req,res)
+{
+    Usuario.findOne({_id: req.params.id},function(err,usuario)
+    {
+        res.json(usuario)
+    })
+}
+
+exports.update = function(req,res)
+{
+    let usuario = 
+    {
+        usr_login: req.body.login,
+        usr_nombre: req.body.nombre,
+        usr_password: req.body.password,
+        usr_activo: req.body.activo,
+        usr_logo: req.body.logo,
+        usr_img_perfil: req.body.imagen
+    }
+    Usuario.findByIdAndUpdate(req.params.id,{$set: usuario},function(err)
+    {
+        if(err)
+        {
+            console.error(err),
+            response.exito=false,
+            response.msj="Error al actualizar usuario"
+            res.json(response)
+            return;
+        }
+        responde.exito=true,
+        response.msj="usuario actualizado con exito"
+        res.json(response)
+    })
+}

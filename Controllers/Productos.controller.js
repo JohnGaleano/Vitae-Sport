@@ -55,11 +55,11 @@ exports.update = function(req,res)
 {
     let producto = 
     {
-        p_codigo: req.body.p_codigo,
-        p_nombre: req.body.p_nombre,
-        p_activo: req.body.p_activo,
-        p_cod_alterno: req.body.p_codigo_alterno,
-        p_imagen: req.body.p_imagen
+        p_codigo: req.body.codigo,
+        p_nombre: req.body.nombre,
+        p_activo: req.body.activo,
+        p_cod_alterno: req.body.codigo_alterno,
+        p_imagen: req.body.imagen
     }
     Producto.findByIdAndUpdate(req.params.id,{$set: producto},function(err)
     {

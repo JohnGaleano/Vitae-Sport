@@ -21,7 +21,7 @@ exports.create=function(req,res)
     {
         if(err)
         {
-            console.log =false,
+            Console.log =false,
             response.exito =false,
             response.msj ="Error al guardar el producto"
             res.json(err)
@@ -65,13 +65,13 @@ exports.update = function(req,res)
     {
         if(err)
         {
-            console.error(err),
+            Console.error(err),
             response.exito=false,
             response.msj="Error al actualizar producto"
             res.json(response)
             return;
         }
-        responde.exito=true,
+        response.exito=true,
         response.msj="producto actualizado con exito"
         res.json(response)
     })

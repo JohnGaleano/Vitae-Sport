@@ -1,8 +1,35 @@
-const Usuario = require("../Models/Usuarios.model"); 
+const Usuario = require("../Models/Usuarios.model")
+const crypto = require("crypto")
+const jwt = require("jsonwebtoken")
+
+
 let response=
 {
     msj:"",
     exito:false
+}
+
+exports.login = function(req,res,next)
+{
+    let hashedpass = crypto.createHash("sha512").update(req.body.usr_password).digest("hex");
+
+    Usuario.findOne({usuario: req.body.usr_login,pass: hashedpass},function(err,usuario)
+    {
+        let response = 
+        {
+            token:null
+        }
+        if(usuario !== null)
+        {
+            response.token = jwt.sign
+            ({
+                id:usuario._id,
+                usuario: usuario.usuario
+            },"_recret_")
+        }
+        res.json(response)
+    })
+    
 }
 
 exports.create=function(req,res)
@@ -22,7 +49,7 @@ exports.create=function(req,res)
     {
         if(err)
         {
-            console.log =false,
+            Console.log =false,
             response.exito =false,
             response.msj ="Error al guardar el usuario"
             res.json(err)
@@ -73,7 +100,7 @@ exports.update = function(req,res)
             res.json(response)
             return;
         }
-        responde.exito=true,
+        response.exito=true,
         response.msj="usuario actualizado con exito"
         res.json(response)
     })

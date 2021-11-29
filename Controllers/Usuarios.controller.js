@@ -11,9 +11,9 @@ let response=
 
 exports.login = function(req,res,next)
 {
-    let hashedpass = crypto.createHash("sha512").update(req.body.usr_password).digest("hex");
+    let hashedpass = crypto.createHash("sha512").update(req.body.password).digest("hex");
 
-    Usuario.findOne({usuario: req.body.usr_login,pass: hashedpass},function(err,usuario)
+    Usuario.findOne({usuario: req.body.login,pass: hashedpass},function(err,usuario)
     {
         let response = 
         {
@@ -27,6 +27,7 @@ exports.login = function(req,res,next)
                 usuario: usuario.usuario
             },"_recret_")
         }
+        
         res.json(response)
     })
     
@@ -34,11 +35,12 @@ exports.login = function(req,res,next)
 
 exports.create=function(req,res)
 {
+    let hashedpass = crypto.createHash("sha512").update(req.body.password).digest("hex");
     let usuario = new Usuario(
     {
         usr_login: req.body.login,
         usr_nombre: req.body.nombre,
-        usr_password: req.body.password,
+        usr_password: hashedpass,
         usr_activo: req.body.activo,
         usr_logo: req.body.logo,
         usr_img_perfil: req.body.imagen
@@ -81,11 +83,12 @@ exports.findOne = function(req,res)
 
 exports.update = function(req,res)
 {
+    let hashedpass = crypto.createHash("sha512").update(req.body.password).digest("hex");
     let usuario = 
     {
         usr_login: req.body.login,
         usr_nombre: req.body.nombre,
-        usr_password: req.body.password,
+        usr_password: hashedpass,
         usr_activo: req.body.activo,
         usr_logo: req.body.logo,
         usr_img_perfil: req.body.imagen

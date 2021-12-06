@@ -1,0 +1,119 @@
+html, body, div, span, h2, h3, h4, h5, h6, p, ul, li
+ {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+}
+h1{
+    font-family: 'Times New Roman', Times, serif;
+}
+/*Oculta Botones de la lista*/
+ol, ul {
+  list-style: none;
+}
+body {
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #404040;
+  background: #eeebe4;
+}
+.img{
+    width: 180px;
+}
+.viejitos{
+  border-radius: 70px ;
+}
+/*Cada uno de los contenedores para el efecto de tarjeta*/
+.plan {
+  float: left;
+  width: 300px;
+  margin: 20px 2px;
+  padding: 15px 25px;
+  text-align: center;
+  background: white;
+  background-clip: padding-box;
+  border: 2px solid #e5ded6;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-left: 40PX;
+}
+/*Propiedades del titulo*/
+.plan-title {
+  margin-bottom: 12px;
+  font-size: 24px;
+  color: #36bce6;
+}
+/*Propiedades del precio*/
+.plan-price {
+  margin-bottom: 20px;
+  line-height: 1;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fd935a;
+}
+/*Propiedades primer lorem ipsum*/
+.plan-unit {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: normal;
+  color: #aaa;
+}
+/*Propiedades Linea y texto */
+.plan-features {
+  width: 120px;
+  margin: 20px auto 15px;
+  padding: 15px 0 0 15px;
+  border-top: 1px solid #e5ded6;
+  text-align: left;
+}
+/*Propiedades Lorem Ipsum debajo de la linea*/
+.plan-feature {
+  line-height: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+.plan-feature + .plan-feature {
+  margin-top: 5px;
+}
+/*Propiedades Lorem Ipsum debajo de la linea*/
+.plan-feature-name {
+  font-size: 13px;
+  font-weight: normal;
+  color: #aaa;
+  
+}
+.prom{
+   text-decoration: line-through
+}
+.prom2{
+   color:black
+}
+/*Propiedades Boton Comprar*/
+.plan-button {
+  position: relative;
+  display: block;
+  line-height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  background: #fd935c;
+  border-bottom: 2px solid #cf7e3b;
+  border-color: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+.plan-button:active {
+  top: 2px;
+  margin-bottom: 2px;
+  border-bottom: 0;
+}

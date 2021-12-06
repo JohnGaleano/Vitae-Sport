@@ -1,0 +1,16 @@
+.footer{
+    margin-top: 50px;
+    border-radius: 70px;
+    background: #eeebe4;
+}
+.icon{
+    width: 100px;
+    height: 100px;
+}
+.icon-visa{
+    margin-right: 100px;
+    margin-left:0px ;
+}
+.icon-visa-2{
+    margin-top: 18px;
+}

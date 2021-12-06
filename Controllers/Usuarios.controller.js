@@ -1,110 +1,23 @@
-const Usuario = require("../Models/Usuarios.model")
-const crypto = require("crypto")
-const jwt = require("jsonwebtoken")
+const Usuario = require("../models/usuarios.model");
+const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
 
+exports.login = function(req, res, next){
 
-let response=
-{
-    msj:"",
-    exito:false
-}
+    let hashedpass = crypto.createHash("sha512").update(req.body.pass).digest("hex");
 
-exports.login = function(req,res,next)
-{
-    let hashedpass = crypto.createHash("sha512").update(req.body.password).digest("hex");
-
-    Usuario.findOne({usuario: req.body.login,pass: hashedpass},function(err,usuario)
-    {
-        let response = 
-        {
+    Usuario.findOne({ usuario: req.body.usuario, pass: hashedpass}, function(err, usuario){
+        let response = {
             token:null
         }
-        if(usuario !== null)
-        {
-            response.token = jwt.sign
-            ({
-                id:usuario._id,
+
+        if(usuario !== null){
+            response.token = jwt.sign({
+                id: usuario._id, 
                 usuario: usuario.usuario
-            },"_recret_")
+            }, "__recret__");   
         }
-        
-        res.json(response)
-    })
-    
-}
-
-exports.create=function(req,res)
-{
-    let hashedpass = crypto.createHash("sha512").update(req.body.password).digest("hex");
-    let usuario = new Usuario(
-    {
-        usr_login: req.body.login,
-        usr_nombre: req.body.nombre,
-        usr_password: hashedpass,
-        usr_activo: req.body.activo,
-        usr_logo: req.body.logo,
-        usr_img_perfil: req.body.imagen
-    } 
-    )
-
-    usuario.save(function(err)
-    {
-        if(err)
-        {
-            Console.log =false,
-            response.exito =false,
-            response.msj ="Error al guardar el usuario"
-            res.json(err)
-            return;
-        }
-        response.exito=true,
-        response.msj="Usuario guardado con exito"
-        res.json(response)
-    })
-}
-
-
-exports.find = function(req,res)
-{
-    Usuario.find(function(err,usuario)
-    {
-        res.json(usuario)
-    })
-    
-}
-
-exports.findOne = function(req,res)
-{
-    Usuario.findOne({_id: req.params.id},function(err,usuario)
-    {
-        res.json(usuario)
-    })
-}
-
-exports.update = function(req,res)
-{
-    let hashedpass = crypto.createHash("sha512").update(req.body.password).digest("hex");
-    let usuario = 
-    {
-        usr_login: req.body.login,
-        usr_nombre: req.body.nombre,
-        usr_password: hashedpass,
-        usr_activo: req.body.activo,
-        usr_logo: req.body.logo,
-        usr_img_perfil: req.body.imagen
-    }
-    Usuario.findByIdAndUpdate(req.params.id,{$set: usuario},function(err)
-    {
-        if(err)
-        {
-            console.error(err),
-            response.exito=false,
-            response.msj="Error al actualizar usuario"
-            res.json(response)
-            return;
-        }
-        response.exito=true,
-        response.msj="usuario actualizado con exito"
-        res.json(response)
-    })
+        res.json(response);
+        console.log(response)
+    });
 }
